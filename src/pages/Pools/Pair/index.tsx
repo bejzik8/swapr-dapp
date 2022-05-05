@@ -85,7 +85,11 @@ export default function Pair({
               </PointableFlex>
             </Flex>
             <ButtonRow>
-              <ButtonPurpleDim id="join-pool-button" as={Link} to="/create">
+              <ButtonPurpleDim
+                id="pair-trade-button"
+                as={Link}
+                to={token0 && token1 ? `/swap?inputCurrency=${token0.address}&outputCurrency=${token1.address}` : ''}
+              >
                 {t('trade')}
               </ButtonPurpleDim>
             </ButtonRow>

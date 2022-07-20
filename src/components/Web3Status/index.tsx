@@ -90,7 +90,6 @@ export default function Web3Status() {
   }, [allTransactions])
 
   const pending = sortedRecentTransactions.filter(tx => !tx.receipt).map(tx => tx.hash)
-  const confirmed = sortedRecentTransactions.filter(tx => tx.receipt).map(tx => tx.hash)
 
   const [modal, setModal] = useState<ModalView | null>(null)
 
@@ -180,7 +179,6 @@ export default function Web3Status() {
             account={account}
             connector={activeConnector}
             networkConnectorChainId={networkConnectorChainId}
-            onAddressClick={() => setModal(ModalView.Account)}
             avatar={ensAvatar ?? undefined}
           />
         </Row>
@@ -188,9 +186,6 @@ export default function Web3Status() {
       <WalletModal
         modal={modal}
         setModal={setModal}
-        ENSName={ENSName ?? undefined}
-        pendingTransactions={pending}
-        confirmedTransactions={confirmed}
         setPendingError={setPendingError}
         pendingWallet={pendingWallet}
         pendingError={pendingError}

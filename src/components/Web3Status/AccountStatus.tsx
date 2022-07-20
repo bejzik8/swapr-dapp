@@ -3,6 +3,7 @@ import { ChainId } from '@swapr/sdk'
 import { AbstractConnector } from '@web3-react/abstract-connector'
 import { InjectedConnector } from '@web3-react/injected-connector'
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { Text } from 'rebass'
 import styled from 'styled-components'
 
@@ -44,7 +45,7 @@ const View = styled.div`
   padding: 1px;
 `
 
-const Web3StatusConnected = styled.button<{ pending?: boolean }>`
+const Web3StatusConnected = styled(Link)<{ pending?: boolean }>`
   height: 29px;
   padding: 0 8px;
   background: none;
@@ -134,7 +135,6 @@ interface AccountStatusProps {
   account: string | undefined | null
   connector: AbstractConnector | undefined
   networkConnectorChainId: ChainId | undefined
-  onAddressClick: () => void
 }
 
 export function AccountStatus({
@@ -143,7 +143,6 @@ export function AccountStatus({
   account,
   connector,
   networkConnectorChainId,
-  onAddressClick,
   avatar,
 }: AccountStatusProps) {
   const hasPendingTransactions = !!pendingTransactions.length
@@ -164,7 +163,7 @@ export function AccountStatus({
   return (
     <View>
       {account && (
-        <Web3StatusConnected id="web3-status-connected" onClick={onAddressClick} pending={hasPendingTransactions}>
+        <Web3StatusConnected to="/dashboard" id="web3-status-connected" pending={hasPendingTransactions}>
           {hasPendingTransactions ? (
             <RowBetween>
               <Text fontSize={13} marginRight="5px">

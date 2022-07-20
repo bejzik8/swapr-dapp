@@ -14,7 +14,7 @@ const Rewards = lazy(() => import(/* webpackPrefetch: true */ './Rewards'))
 const Pools = lazy(() => import(/* webpackPrefetch: true */ './Pools'))
 const LiquidityMiningCampaign = lazy(() => import(/* webpackPrefetch: true */ './Pools/LiquidityMiningCampaign'))
 const Pair = lazy(() => import(/* webpackPrefetch: true */ './Pools/Pair'))
-
+const Dashboard = lazy(() => import(/* webpackPrefetch: true */ './Dashboard'))
 // const Pair = lazy(() =>
 //   import(/* webpackPrefetch: true */ './Pools/Pair').then(({ Pair }) => ({
 //     default: Pair,
@@ -77,6 +77,8 @@ export function Routes() {
       />
 
       <Route path="/liquidity-mining/create" element={<RouteWrapper element={<CreateLiquidityMining />} />} />
+
+      <Route path="/dashboard" element={<Dashboard />} />
 
       <Route path="send" element={<RedirectToSwap />} />
       <Route path="*" element={<RedirectToSwap />} />

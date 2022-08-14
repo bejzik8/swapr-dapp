@@ -1,7 +1,9 @@
+import { useContext } from 'react'
 import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
 
 import { ReactComponent as EcoRouter } from '../../assets/svg/eco-router.svg'
+import { SwapContext, SwapTab } from '../../modules/swap/context'
 import Row from '../Row'
 
 const TabsColumn = styled.div`
@@ -50,18 +52,34 @@ const StyledEcoRouter = styled(EcoRouter)`
   margin-right: 5px;
 `
 
-export const Tabs = () => {
+export function Tabs() {
   const { t } = useTranslation('swap')
+  const { activeTab, setActiveTab } = useContext(SwapContext)
 
   return (
     <TabsColumn>
       <TabsRow>
-        <Button className="active">
+        <Button
+          onClick={() => setActiveTab(SwapTab.EcoRouter)}
+          className={activeTab === SwapTab.EcoRouter ? 'active' : ''}
+        >
           <StyledEcoRouter />
           Eco Router V1.5
         </Button>
-        <Button disabled={true}>{t('tabs.limit')}</Button>
-        <Button disabled={true}>{t('tabs.bridgeSwap')}</Button>
+        <Button
+          onClick={() => setActiveTab(SwapTab.LimitOrder)}
+          className={activeTab === SwapTab.LimitOrder ? 'active' : ''}
+          disabled={true}
+        >
+          {t('tabs.limit')}
+        </Button>
+        <Button
+          onClick={() => setActiveTab(SwapTab.BridgeSwap)}
+          className={activeTab === SwapTab.BridgeSwap ? 'active' : ''}
+          disabled={true}
+        >
+          {t('tabs.bridgeSwap')}
+        </Button>
       </TabsRow>
     </TabsColumn>
   )

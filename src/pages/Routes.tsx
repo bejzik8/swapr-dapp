@@ -8,7 +8,7 @@ import { chainSupportsSWPR } from '../utils/chainSupportsSWPR'
 import { RedirectDuplicateTokenIds, RedirectOldAddLiquidityPathStructure } from './AddLiquidity/redirects'
 import { RedirectOldRemoveLiquidityPathStructure } from './RemoveLiquidity/redirects'
 // Dont want to lazy import swap
-import Swap from './Swap'
+import { Swap as SwapPage } from './Swap'
 import { RedirectToSwap } from './Swap/redirects'
 
 // Lazy loaded routes
@@ -45,7 +45,7 @@ const RouteWrapper = ({ element }: { element: JSX.Element }) => {
 export function Routes() {
   return (
     <Switch>
-      <Route path="swap" element={<Swap />} />
+      <Route path="swap" element={<SwapPage />} />
       <Route path="swap/:outputCurrency" element={<RedirectToSwap />} />
       <Route path="bridge" element={<Bridge />} />
 

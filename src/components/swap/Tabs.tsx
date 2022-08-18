@@ -69,7 +69,6 @@ export function Tabs() {
         <Button
           onClick={() => setActiveTab(SwapTab.LimitOrder)}
           className={activeTab === SwapTab.LimitOrder ? 'active' : ''}
-          disabled={true}
         >
           {t('tabs.limit')}
         </Button>

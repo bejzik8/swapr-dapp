@@ -331,12 +331,14 @@ export class Connext extends EcoBridgeChildBase {
         user,
         sendingAssetId,
         router,
+        amountReceived,
       } = bid
 
       const { prepareResponse, transactionId } = await this._connextSdk.prepareTransfer(transferData, false)
 
       const summary: ConnextTransaction = {
         amount,
+        amountReceived,
         bidSignature,
         callDataHash,
         chainId: from.chainId.toString(),

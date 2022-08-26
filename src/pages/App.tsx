@@ -13,6 +13,7 @@ import NetworkWarningModal from '../components/NetworkWarningModal'
 import { SpaceBg } from '../components/SpaceBg/SpaceBg'
 import Web3ReactManager from '../components/Web3ReactManager'
 import { useActiveWeb3React } from '../hooks'
+import { useIsCurrentPageAdvTradeMode } from '../hooks/useIsCurrentPageExpertMode'
 import { useIsAdvancedTradeMode } from '../state/user/hooks'
 import { SWPRSupportedChains } from '../utils/chainSupportsSWPR'
 import { Routes } from './Routes'
@@ -68,16 +69,13 @@ const Marginer = styled.div`
 
 export default function App() {
   const { chainId } = useActiveWeb3React()
-  const location = useLocation()
+
   const theme = useTheme()
-  const [isSwapPage, setIsSwapPage] = useState(false)
-  const isAdvTrade = useIsAdvancedTradeMode()
+  const isAdvTradeView = useIsAdvancedTradeMode()
+  const location = useLocation()
 
-  useEffect(() => {
-    setIsSwapPage(!!location.pathname.includes('swap'))
-  }, [location])
-
-  const isSwapPageAdvancedTradeMode = isSwapPage && isAdvTrade
+  const isCurrentPage = useIsCurrentPageAdvTradeMode(location.pathname)
+  const isSwapPageAdvancedTradeMode = isCurrentPage && isAdvTradeView
 
   useEffect(() => {
     document.body.classList.add('no-margin')

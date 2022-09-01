@@ -9,6 +9,7 @@ import store from '../../state'
 import { useSwapState } from '../../state/swap/hooks'
 import { AdvancedTradingViewAdapter } from './adapters/advancedTradingView.adapter'
 import { SwaprAdapter } from './adapters/swapr/swapr.adapter'
+import { UniswapV3Adapter } from './adapters/uniswapV3/uniswapV3.adapter'
 import { AdapterAmountToFetch, Adapters } from './advancedTradingView.types'
 
 const WrappedNativeCurrencyAddress = {
@@ -19,6 +20,7 @@ const WrappedNativeCurrencyAddress = {
 
 const adapters: Adapters = {
   swapr: new SwaprAdapter(),
+  uniswapV3: new UniswapV3Adapter(),
 }
 
 const getTokenAddress = (chainId: ChainId, tokenAddress: string | undefined) =>

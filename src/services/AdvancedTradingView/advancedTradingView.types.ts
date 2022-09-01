@@ -5,6 +5,7 @@ import { Store } from '@reduxjs/toolkit'
 import { AppState } from '../../state'
 import { AbstractAdvancedTradingViewAdapter } from './adapters/advancedTradingView.adapter'
 import { SwaprPair } from './adapters/swapr/swapr.types'
+import { UniswapV3Pair } from './adapters/uniswapV3/uniswapV3.types'
 
 export type InitialState = {
   pair: {
@@ -14,6 +15,9 @@ export type InitialState = {
   adapters: {
     swapr: {
       [pairId: string]: SwaprPair | undefined
+    }
+    uniswapV3: {
+      [pairId: string]: UniswapV3Pair | undefined
     }
   }
 }
@@ -32,6 +36,7 @@ export type AdvancedViewTransaction = {
 
 export enum AdapterKeys {
   SWAPR = 'swapr',
+  UNISWAP_V3 = 'uniswapV3',
 }
 
 export enum AdapterPayloadType {

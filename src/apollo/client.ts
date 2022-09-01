@@ -5,6 +5,11 @@ import { GraphQLClient } from 'graphql-request'
 
 import { SWPRSupportedChains } from '../utils/chainSupportsSWPR'
 
+export const subgraphUniswapV3ClientsUris: { [chainId in ChainId.MAINNET | ChainId.ARBITRUM_ONE]: string } = {
+  [ChainId.MAINNET]: 'https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v3',
+  [ChainId.ARBITRUM_ONE]: 'https://api.thegraph.com/subgraphs/name/ianlapham/arbitrum-minimal',
+}
+
 export const subgraphClientsUris: { [chainId in SWPRSupportedChains]: string } = {
   [ChainId.MAINNET]: 'https://api.thegraph.com/subgraphs/name/dxgraphs/swapr-mainnet-v2',
   [ChainId.ARBITRUM_ONE]: 'https://api.thegraph.com/subgraphs/name/dxgraphs/swapr-arbitrum-one-v3',
